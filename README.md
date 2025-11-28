@@ -1,1 +1,0 @@
-# Udacity-s-quize-practicece
