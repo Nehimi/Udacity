@@ -11,9 +11,33 @@
     <!-- a variable is a container for data -->
     <script>
 
-        console.log(3<5);
-        console.log(5===7);
-        console.log(10!==10);
+        // console.log(3<5);
+        // console.log(5===7);
+        // console.log(10!==10);
+
+        console.log(true&&true);
+        console.log(true&&false);
+        console.log(false||true);
+        console.log(false||false);
+        console.log(!true);
+
+        if (0){
+            console.log('truthy'); 
+            // 0 is falsy
+        }
+        const cartQuantity =3;
+        if (cartQuantity){
+            console.log(' cart  has products');
+            // any non-zero number is truthy
+        }
+        console.log(!0);
+        //0 is falsy so !0 is true
+       const message = false&&'Hello';
+       console.log(message);
+
+
+       const currence=undefined||'USD';
+       console.log(currence);
     </script>
 </body>
 
