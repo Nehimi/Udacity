@@ -5,6 +5,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM projects</title>
+    <style>
+        /* change the appreance */
+        .subscrib-btn {
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            font-family: arial;
+        }
+
+        .is-subscribed {
+            background-color: rgb(240, 240, 240);
+            color: black;
+        }
+
+        .cost-input {
+            padding: 10px;
+            font-size: 15px;
+        }
+
+        .calculate-btn {
+            padding: 12px 15px;
+            background-color: green;
+            color: white;
+            border: none;
+            font-size: 15px;
+
+        }
+    </style>
 </head>
 
 <body>
@@ -20,14 +53,16 @@
     <p>Youtube Subscribe button</p>
     <button onclick="
     subscribe();
-   " class="js-subscribe-button">Subscribe</button>
+   " class="js-subscribe-button subscrib-btn">Subscribe</button><br><br><br>
 
 
-    <input placeholder="Cost of order" class="js-cost-input" onkeydown="
-   handleCostKeydown(event)"><button onclick=" calculateTotal();
-//    console.log(document.querySelector('.js-cost-input' ))">Calculate</button>
+    <input placeholder="Cost of order" class="js-cost-input cost-input" onkeydown="
+   handleCostKeydown(event)">
+    <button onclick=" calculateTotal();" class="calculate-btn">
+        <!-- //    console.log(document.querySelector('.js-cost-input' ))-->Calculate
+    </button>
 
-<p class="js-total-cost"></p>
+    <p class="js-total-cost"></p>
     <script>
 
 
@@ -35,9 +70,16 @@
             const buttonElement = document.querySelector('.js-subscribe-button');
             if (buttonElement.innerHTML === 'Subscribe') {
                 buttonElement.innerHTML = 'Subscribed';
+
+                //.classList=gives us control over the classes of an element
+                // CLASSLIST IS AN OBJECT WITH METHODS AND PROPERTIES
+                //.add() method to add a class to the element
+                //.remove() method to remove a class from the element
+                buttonElement.classList.add('is-subscribed');
             }
             else {
                 buttonElement.innerHTML = 'Subscribe';
+                buttonElement.classList.remove('is-subscribed');
             }
         }
 
