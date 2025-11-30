@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARRAY AND LOOPS</title>
+</head>
+
+<body>
+
+    <script>
+        const myArray = [
+            10,
+            20,
+            30
+        ];
+        myArray[0] = 15;
+        console.log(myArray);
+        myArray.push(40);// ADD to the end of array
+        myArray.splice(0,1);// REMOVE 1 element from index 0
+        console.log(myArray);
+        for (let i = 0; i < myArray.length; i++) {
+            console.log('Element at index ' + i + ' is ' + myArray[i]);
+
+        }
+
+
+        console.log(Array.isArray(myArray));//true
+
+    </script>
+</body>
+
+</html>
