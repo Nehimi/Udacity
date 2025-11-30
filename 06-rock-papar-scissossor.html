@@ -4,100 +4,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
+    <title>Rock Paper Scissors Game</title>
 </head>
 
 <body>
-    <p>Rock Paper Scissors</p>
-    <button onclick="
-   const randomNumber = Math.random();
-    var computerMove='';
-   if (randomNumber >=0 && randomNumber<1/3){
-    computerMove = 'Rock';
+    <h1>Rock Paper Scissors</h1>
 
-   }
-   else if (randomNumber>=1/3 && randomNumber<2/3){
-    computerMove = 'Paper';
-   }
-else if ( randomNumber>=2/3 && randomNumber<1){
-    computerMove = 'Scissors';
-}
-console.log(computerMove);
+    <button onclick="playGame('Rock')">Rock</button>
+    <button onclick="playGame('Paper')">Paper</button>
+    <button onclick="playGame('Scissors')">Scissors</button>
 
+    <p class="js-result">
+        </p>
 
-let result='';
-if (computerMove==='Rock'){
-    result='You tied';
-    }
-    else if (
-        computerMove==='Paper'){
- result='You lost';
-        } 
-    else if (computerMove==='Scissors'){
-        result='You win';
-    }
+    <p class="js-score">
+        </p>
 
-
-    alert(`you picked rock Computer picked ${computerMove}. ${ result}`);
-    ">Rock</button>
-    <button onclick="
-   const randomNumber = Math.random();
-    var computerMove='';
-   if (randomNumber >=0 && randomNumber<1/3){
-    computerMove = 'Rock';
-
-   }
-   else if (randomNumber>=1/3 && randomNumber<2/3){
-    computerMove = 'Paper';
-   }
-else if ( randomNumber>=2/3 && randomNumber<1){
-    computerMove = 'Scissors';
-}
-console.log(computerMove);
-let result='';
-if (computerMove==='Rock'){
-    result='You WIN';
-    }
-    else if (
-        computerMove==='Paper'){
- result='You TIE';
-        } 
-    else if (computerMove==='Scissors'){
-        result='You LOSE';
-    }
-    alert(`you picked Paper Computer picked ${computerMove}. ${ result}`);
-    ">Paper</button>
-    <button onclick="
-    
-   const randomNumber = Math.random();
-    var computerMove='';
-   if (randomNumber >=0 && randomNumber<1/3){
-    computerMove = 'Rock';
-
-   }
-   else if (randomNumber>=1/3 && randomNumber<2/3){
-    computerMove = 'Paper';
-   }
-else if ( randomNumber>=2/3 && randomNumber<1){
-    computerMove = 'Scissors';
-}
-console.log(computerMove);
-let result='';
-if (computerMove==='Rock'){
-    result='You lose';
-    }
-    else if (
-        computerMove==='Paper'){
- result='You win';
-        } 
-    else if (computerMove==='Scissors'){
-        result='You tie';
-    }
-    alert(`you picked scissors Computer picked ${computerMove}. ${ result}`);
-    ">Scissors</button>
+    <button onclick="resetScore();">Reset Score</button>
 
     <script>
+        // 1. Initialize Score and Load from localStorage
+        // Loads existing score or defaults to 0
+        let score = JSON.parse(localStorage.getItem('score')) || {
+            wins: 0,
+            losses: 0,
+            ties: 0
+        };
 
+        // --- Core Helper Functions ---
+
+        // Function to display the score in the HTML
+        function updateScoreElement() {
+            document.querySelector('.js-score').innerHTML = 
+                `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+        }
+
+        // Display the initial score when the page loads
+        updateScoreElement();
+
+        // Function to handle score reset
+        function resetScore() {
+            score.wins = 0;
+            score.losses = 0;
+            score.ties = 0;
+            localStorage.removeItem('score'); // Clear from browser storage
+            updateScoreElement(); // Update the display
+            document.querySelector('.js-result').innerHTML = 'Score has been reset!';
+        }
+
+        // Function to generate the computer's move
+        function pickComputerMove() {
+            const randomNumber = Math.random();
+            let computerMove = '';
+
+            if (randomNumber >= 0 && randomNumber < 1 / 3) {
+                computerMove = 'Rock';
+            } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
+                computerMove = 'Paper';
+            } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
+                computerMove = 'Scissors';
+            }
+            return computerMove;
+        }
+
+        // --- Main Game Function ---
+
+        // Single function to handle the entire game logic and updates
+        function playGame(playerMove) {
+            const computerMove = pickComputerMove();
+            let result = '';
+
+            // 1. Determine Result and Update Score
+            if (playerMove === computerMove) {
+                result = 'You tied.';
+                score.ties += 1;
+            } 
+            else if (
+                (playerMove === 'Rock' && computerMove === 'Scissors') ||
+                (playerMove === 'Paper' && computerMove === 'Rock') ||
+                (playerMove === 'Scissors' && computerMove === 'Paper')
+            ) {
+                result = 'You win!';
+                score.wins += 1;
+            } 
+            else {
+                result = 'You lose.';
+                score.losses += 1;
+            }
+
+            // 2. Save and Display
+            // Save the score to browser storage
+            localStorage.setItem('score', JSON.stringify(score));
+            
+            // Update the score and result displays
+            updateScoreElement();
+            document.querySelector('.js-result').innerHTML = 
+                `You picked **${playerMove}**. Computer picked **${computerMove}**. ${result}`;
+        }
     </script>
 </body>
 
