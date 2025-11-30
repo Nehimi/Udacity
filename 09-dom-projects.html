@@ -23,18 +23,15 @@
    " class="js-subscribe-button">Subscribe</button>
 
 
-    <input type="number" placeholder="Cost of order" class="js-cost-input"><button onclick="
+
+
+
+
+    <input placeholder="Cost of order" class="js-cost-input" onkeydown="
+   handleCostKeydown(event);
+"><button onclick="
 //    console.log(document.querySelector('.js-cost-input' ))
-   const InputElement=document.querySelector('.js-cost-input' );
-   let cost = Number(InputElement.value);
-
-   if (cost<40){
-  cost = cost + 10;
-  console.log(cost);
-  console.log(typeof cost);
-   }
-
-   document.querySelector('.js-total-cost').innerHTML=`$${cost}`;
+   calculateTotal();
    ">Calculate</button>
     <p class="js-total-cost"></p>
     <script>
@@ -47,6 +44,33 @@
             }
             else {
                 buttonElement.innerHTML = 'Subscribe';
+            }
+        }
+
+
+
+
+        function calculateTotal() {
+            const InputElement = document.querySelector('.js-cost-input');
+            let cost = Number(InputElement.value);
+
+            if (cost < 40) {
+                cost = cost + 10;
+                console.log(cost);
+                console.log(typeof cost);
+            }
+
+            document.querySelector('.js-total-cost').innerHTML = `$${cost}`;
+
+        }
+
+
+        function handleCostKeydown(event) {
+            // console.log('typing');
+            // console.log(event);
+            // console.log(event.key);
+            if (event.key === 'Enter') {
+                calculateTotal();
             }
         }
     </script>
