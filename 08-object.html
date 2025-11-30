@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+</head>
+
+<body>
+
+    <!-- Group and let us to use  mulitple values together  -->
+    <!-- To use mulitple values together and to organize them -->
+
+    <script>
+
+        // const product = {
+        //     name: 'socks',//property value pair
+        //     price: 1098
+        // };
+
+        // console.log(typeof product);
+        // console.log(product);
+
+        // console.log(product.name);
+        // console.log(product.price);
+
+        // product.name = 'cotton socks';
+        // console.log(product);
+
+        // product.newProperty = true;
+        // console.log(product);
+
+        // delete product.newProperty;
+        // console.log(product);
+
+        const product2 = {
+            // group related together
+            // inside an object we can save any type of value
+            name: 'shirt',
+            'delivery-time': '1 day',
+            rating: {
+                stars: 4.5,
+                count: 87
+            },
+            fun: function function1() {
+                console.log('function in side object')
+            },
+
+        method() {
+                console.log('methode');  //this is shorthand methode tho the above function
+        }
+
+        };
+        object2.method();
+        console.log(product2);
+        console.log(product2.name);
+        console.log(product2['name'])
+        console.log(product2['delivery-time']);
+        console.log(product2.rating.count)//87
+        product2.fun();//function in side object
+        console.log(typeof console.log);//FUNCTION
+        //Math OBJECT RANDOM() Function = Built in 
+        // Math.random()//built in object also  JSON and localStorage
+
+        // JSON BUILT-IN OBJECT HELPS US WORK WITH JSON
+        //  LIKE AS JAVASCRIPT OBJECT BUT HAS LEE FEATURE
+
+        //WE USE JSON when we send data b/n computers 
+        // when we store data
+
+        // Built-in json Object
+
+
+        // convert:
+        // js object to JSON
+
+
+
+        /*
+console.log(JSON.stringify(product2));
+// convert:
+// json object to js
+//variables are temporar if we close the the page or repratio the variable is deleted
+const jsonString = JSON.stringify(product2);
+console.log(JSON.parse(jsonString));
+//LocaleStorage save values permanently
+//localStorage only support strings
+const score = localStorage.getItem('message');
+console.log(localStorage.getItem(score));
+// localStorage.removeItem('score');to remove item fromthe local storage
+*/
+
+
+        //AUTO BOXING 
+        console.log('hello'.length);
+        console.log('hello'.toUpperCase());
+
+
+
+
+
+        //Object references
+        const object1 = {
+
+            message: 'hello'
+        }
+        const object2 = object1;//copy by value
+        object1.message = 'good job!';
+        console.log(object1);
+        console.log(object2);
+
+        const object3 = {
+            message: 'good job'
+        }
+        console.log(object3 === object1);//object reference
+        console.log(object2 === object1);
+
+
+
+
+        // destructuring is the easier way to take properties out of an object
+        const object4 = {
+            message: 'good job',
+            price: 677
+
+        }
+        const { message, price } = object4;
+        console.log(message);
+        console.log(price);
+
+
+    </script>
+</body>
+
+</html>

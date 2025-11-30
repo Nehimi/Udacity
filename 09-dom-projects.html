@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM projects</title>
+</head>
+
+<body>
+
+    <!-- process for javascript
+    1 figer out what steps we need (algorithm) -->
+    <!-- STEPS
+    1.IF THE TEXT IS Subscribe =>subscribed
+    2.otherwith,change it back =>subscribe -->
+
+    <!-- PRO tips firstly we should do the js or css cod inline the make the code cut and past to the external -->
+
+    <p>Youtube Subscribe button</p>
+    <button onclick="
+    subscribe();
+   " class="js-subscribe-button">Subscribe</button>
+
+
+    <input type="number" placeholder="Cost of order" class="js-cost-input"><button onclick="
+//    console.log(document.querySelector('.js-cost-input' ))
+   const InputElement=document.querySelector('.js-cost-input' );
+   let cost = Number(InputElement.value);
+
+   if (cost<40){
+  cost = cost + 10;
+  console.log(cost);
+  console.log(typeof cost);
+   }
+
+   document.querySelector('.js-total-cost').innerHTML=`$${cost}`;
+   ">Calculate</button>
+    <p class="js-total-cost"></p>
+    <script>
+
+
+        function subscribe() {
+            const buttonElement = document.querySelector('.js-subscribe-button');
+            if (buttonElement.innerHTML === 'Subscribe') {
+                buttonElement.innerHTML = 'Subscribed';
+            }
+            else {
+                buttonElement.innerHTML = 'Subscribe';
+            }
+        }
+    </script>
+</body>
+
+</html>
