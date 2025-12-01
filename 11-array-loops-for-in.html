@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object and For...in Loop</title>
+</head>
+
+<body>
+
+    <h1>Inventory Value Calculator</h1>
+
+    <script>
+        // 1. Define a JavaScript **Object** to store inventory data.
+        //    Keys are item names, and values are their respective prices.
+        const inventoryPrices = {
+            'laptop': 1200,
+            'keyboard': 75,
+            'mouse': 30,
+            'monitor': 350
+        };
+
+        // 2. Define quantities for each item (for simple calculation)
+        const itemQuantities = {
+            'laptop': 2,
+            'keyboard': 5,
+            'mouse': 8,
+            'monitor': 3
+        };
+
+        // 3. Initialize a variable to store the total inventory value
+        let totalValue = 0;
+
+        console.log('--- Calculating Inventory Value ---');
+
+        // 4. Use a **for...in loop** to iterate over the properties (keys) of the inventoryPrices object.
+        for (let itemName in inventoryPrices) {
+            // 'itemName' holds the key (e.g., 'laptop', 'keyboard') in each iteration.
+
+            // Get the price using the key
+            const price = inventoryPrices[itemName];
+
+            // Get the quantity using the same key from the quantities object
+            const quantity = itemQuantities[itemName];
+            
+            // Calculate the value for the current item
+            const itemValue = price * quantity;
+
+            // Add the item's value to the running total
+            totalValue += itemValue;
+
+            console.log(`${itemName}: ${quantity} units at $${price} each. Item Value: $${itemValue}`);
+        }
+
+        console.log('---');
+        console.log(`The Total Inventory Value is: $${totalValue}`);
+        // Expected Output: (1200*2) + (75*5) + (30*8) + (350*3) = 2400 + 375 + 240 + 1050 = 4065
+    </script>
+
+</body>
+
+</html>
