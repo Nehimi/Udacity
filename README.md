@@ -1,2 +1,2 @@
 # Udacity js practice code
-![alt text](image.png)
+![alt text](flowChart.png)
