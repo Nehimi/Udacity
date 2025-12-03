@@ -53,3 +53,28 @@ if (
 ) {
     console.log("I'd like two scoops of " + flavor + " ice cream in a " + vessel + " with " + toppings + ".");
 }
+
+
+/*
+ * Programming Quiz: Pizza Order Example
+ *
+ * This code demonstrates using a single IF statement 
+ * to check multiple combined conditions.
+ */
+
+// Change these values to test your code
+var crust = "thin";
+var size = "medium"; // This will cause the condition to fail
+var topping = "pepperoni";
+
+// Add your code here
+if (
+    (crust === "thin" || crust === "thick") &&
+    (size === "small" || size === "large") &&
+    (topping === "pepperoni" || topping === "mushrooms")
+) {
+    console.log("Your order has been placed: A " + size + " pizza with " + crust + " crust and " + topping + ".");
+} else {
+    // Adding an else block here to show when the order is NOT placed
+    console.log("Sorry, we can only process orders with thin/thick crust, small/large size, and pepperoni/mushrooms topping.");
+}
