@@ -1,15 +1,14 @@
 <?php 
-header(Content-type:application/json);
+header("Content-type:application/json");
 include "../dataBaseConnection.php";
 
 //Get total users count
-$totalUsersQuery =mysqli_query($dataBaseConnection, "SELECT Count(*) as total FROM users";
+$totalUsersQuery = mysqli_query($dataBaseConnection, "SELECT Count(*) as total FROM users");
 $totalUsers= mysqli_fetch_assoc($totalUsersQuery)['total'];
 
 //GET total Hew users count
-$activeHewsQuery=mysqli_query($dataBaseConnection,"SELECT COUNT(*) as total FROM users WHERE role ='HEW' AND status='active'");
-$activeHEWs = mysqli_fetch_assoc($activeHEWsQuery)['total'];
-
+$activeHewsQuery= mysqli_query($dataBaseConnection,"SELECT COUNT(*) as total FROM users WHERE role ='HEW' AND status='active'");
+$activeHEWs = mysqli_fetch_assoc($activeHewsQuery)['total'];
 $reportsToday=89; //Dummy data for now
 $systemStatus=99.9%; //Dummy data for now
 
