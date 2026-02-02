@@ -1,0 +1,36 @@
+<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Closures</title>
+</head>
+<body>
+    <h1>Function Closures</h1>
+    <p>counting with local variable</p>
+<p id="demo">0</p>
+
+<button onclick="myFunction()">Count</button>
+
+ <script>
+  function myCounter(){
+    let counter=0;
+   return function(){
+    counter++;
+    return counter;
+    
+    };
+  }
+  const add=myCounter();
+
+  function myFunction(){
+document.getElementById('demo').innerHTML=add();
+  }
+  
+ </script> 
+</body>
+
+</html>
+
+
