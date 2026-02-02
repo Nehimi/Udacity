@@ -1,40 +1,56 @@
-<html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Function Closures</title>
+    <title>Facebook Like Closure</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding-top: 50px; }
+        .post { border: 1px solid #ccc; padding: 10px; margin: 10px; display: inline-block; width: 200px; }
+        button { cursor: pointer; background-color: #1877f2; color: white; border: none; padding: 8px 16px; border-radius: 5px; }
+    </style>
 </head>
 <body>
-    <h1>Function Closures</h1>
-    <p>counting with local variable</p>
-<p id="demo">0</p>
 
-<button onclick="myFunction()">Count</button>
-
- <script>
-  function myCounter()
-  {
-    let counter=0;
-   return function(){
-    counter++;
-    return counter;
+    <h1>Facebook Closures</h1>
     
-    };
-  }
-  const add=myCounter();
+    <div class="post">
+        <p id="photo-display">photo has 0 likes</p>
+        <button onclick="updatePhoto()">Like Photo</button>
+    </div>
 
-  function myFunction(){
-document.getElementById('demo').innerHTML=add();
-  }
-  
- </script> 
+    <div class="post">
+        <p id="video-display">video has 0 likes</p>
+        <button onclick="updateVideo()">Like Video</button>
+    </div>
+
+    <script>
+        // 1. The Closure Factory
+        function createPost(postName) {
+            let likes = 0; 
+            return function() {
+                likes++;
+                return `${postName} has ${likes} likes`;
+            };
+        }
+
+        // 2. Creating independent instances
+        const photoCounter = createPost('photo');
+        const videoCounter = createPost('video');
+
+        // 3. Functions to update the HTML
+        function updatePhoto() {
+            document.getElementById('photo-display').innerHTML = photoCounter();
+        }
+
+        function updateVideo() {
+            document.getElementById('video-display').innerHTML = videoCounter();
+        }
+    </script> 
 </body>
-
 </html>
 
-
+<!-- 
 const add = myCounter();
 const multiply = myCounter();
 
@@ -42,7 +58,6 @@ console.log(add());      // Output: 1
 console.log(add());      // Output: 2
 console.log(multiply()); // Output: ??? The answer is 1. Why?
 console.log(add());      // Output: 3
-
 function myCounter() {
     let counter = 0;
     return function() {
@@ -65,4 +80,4 @@ console.log(multiply()); // Output: 3
 // እያንዳንዱ ፋንክሽን በራሱ የተለየ ክተር (counter) ተጠቃሚ ነው።
 // ይህ በመጠቀም ፋንክሽኖች የግል ሁኔታ እንዴት እንደሚኖረው ያሳያል።
 // በዚህ ሁኔታ ክተሩ ከውጭ አይታወቅም።
-// ይህ የግል ሁኔታ በፋንክሽኖች ውስጥ እንዴት እንደሚጠቀም ያሳያል።
+// ይህ የግል ሁኔታ በፋንክሽኖች ውስጥ እንዴት እንደሚጠቀም ያሳያል። -->
