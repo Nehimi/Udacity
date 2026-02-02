@@ -14,7 +14,8 @@
 <button onclick="myFunction()">Count</button>
 
  <script>
-  function myCounter(){
+  function myCounter()
+  {
     let counter=0;
    return function(){
     counter++;
@@ -34,3 +35,34 @@ document.getElementById('demo').innerHTML=add();
 </html>
 
 
+const add = myCounter();
+const multiply = myCounter();
+
+console.log(add());      // Output: 1
+console.log(add());      // Output: 2
+console.log(multiply()); // Output: ??? The answer is 1. Why?
+console.log(add());      // Output: 3
+
+function myCounter() {
+    let counter = 0;
+    return function() {
+        counter++;
+        return counter;
+    };
+}
+
+// The multiply function has its own separate counter
+const multiply = myCounter();
+
+console.log(multiply()); // Output: 1
+console.log(multiply()); // Output: 2
+console.log(multiply()); // Output: 3
+
+// Each function maintains its own closure with its own counter variable.
+
+// This demonstrates how closures allow functions to have private state.   
+// ይህ ኮድ ሁለት ተለያዩ ፋንክሽኖች እንዴት እያንዳንዱ ራሱ የግል ሁኔታ (private state) እንደሚኖረው ያሳያል።
+// እያንዳንዱ ፋንክሽን በራሱ የተለየ ክተር (counter) ተጠቃሚ ነው።
+// ይህ በመጠቀም ፋንክሽኖች የግል ሁኔታ እንዴት እንደሚኖረው ያሳያል።
+// በዚህ ሁኔታ ክተሩ ከውጭ አይታወቅም።
+// ይህ የግል ሁኔታ በፋንክሽኖች ውስጥ እንዴት እንደሚጠቀም ያሳያል።
