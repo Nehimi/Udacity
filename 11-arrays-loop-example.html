@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array and Loop Example</title>
+</head>
+
+<body>
+
+    <h1>Array Sum Calculation</h1>
+
+    <script>
+        // 1. Define an array of numbers
+        const numbers = [
+            5,
+            12,
+            8,
+            20,
+            3
+        ];
+
+        // 2. Initialize a variable to store the sum
+        let totalSum = 0;
+
+        // 3. Use a 'for' loop to iterate through the 'numbers' array
+        //    - The loop runs from index 0 up to (but not including) numbers.length
+        for (let i = 0; i < numbers.length; i++) {
+            // Get the current element's value
+            const currentValue = numbers[i];
+
+            // Add the current value to the totalSum
+            totalSum += currentValue; // This is a shorthand for totalSum = totalSum + currentValue;
+
+            // Optional: Log the operation step by step
+            console.log(`Adding ${currentValue}. Current sum: ${totalSum}`);
+        }
+
+        // 4. Log the final result
+        console.log('---');
+        console.log(`The numbers in the array are: ${numbers}`);
+        console.log(`The final sum of all elements is: ${totalSum}`); 
+        // Expected output: 5 + 12 + 8 + 20 + 3 = 48
+    </script>
+
+</body>
+
+</html>
