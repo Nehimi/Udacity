@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Closure Demo</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #f4f4f9; }
+        .bank-card { background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 350px; }
+        h2 { color: #2c3e50; }
+        #balance-display { font-size: 2rem; color: #27ae60; font-weight: bold; margin: 20px 0; }
+        input { padding: 10px; width: 80%; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 10px; }
+        button { padding: 10px 20px; cursor: pointer; border: none; border-radius: 5px; color: white; transition: 0.3s; margin: 5px; }
+        .dep-btn { background-color: #2ecc71; }
+        .with-btn { background-color: #e74c3c; }
+        button:hover { opacity: 0.8; }
+        #message { color: #7f8c8d; font-size: 0.9rem; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="bank-card">
+    <h2>የኢትዮጵያ ባንክ</h2>
+    <p>አሁን ያለው ሂሳብ፡</p>
+    <div id="balance-display">ETB 100</div>
+    
+    <input type="number" id="amount" placeholder="መጠን ያስገቡ">
+    <br>
+    <button class="dep-btn" onclick="handleDeposit()">ብር አስገባ</button>
+    <button class="with-btn" onclick="handleWithdraw()">ብር አውጣ</button>
+    
+    <p id="message"></p>
+</div>
+
+<script>
+    // 1. የባንክ አካውንት ፋብሪካ (Closure)
+    function createAccount(initialBalance) {
+        let balance = initialBalance; // ይህ Variable በክሎዠር "የተቆለፈ" ነው
+
+        // የውስጥ ፈንክሽኖችን የያዘ Object ይመልሳል
+        return {
+            deposit: function(amount) {
+                if(amount > 0) {
+                    balance += amount;
+                    return { success: true, newBalance: balance, msg: "በተሳካ ሁኔታ ገብቷል!" };
+                }
+                return { success: false, msg: "ትክክለኛ ቁጥር ያስገቡ" };
+            },
+            withdraw: function(amount) {
+                if (amount > balance) {
+                    return { success: false, msg: "በቂ ሂሳብ የሎትም!" };
+                }
+                balance -= amount;
+                return { success: true, newBalance: balance, msg: "ብር ወጥቷል!" };
+            },
+            getBalance: function() {
+                return balance;
+            }
+        };
+    }
+
+    // 2. አካውንት መክፈት (Instance መፍጠር)
+    const myAcc = createAccount(100);
+
+    // 3. ከ HTML ጋር ማገናኘት
+    const balanceText = document.getElementById('balance-display');
+    const messageText = document.getElementById('message');
+    const amountInput = document.getElementById('amount');
+
+    function handleDeposit() {
+        const val = Number(amountInput.value);
+        const result = myAcc.deposit(val);
+        updateUI(result);
+    }
+
+    function handleWithdraw() {
+        const val = Number(amountInput.value);
+        const result = myAcc.withdraw(val);
+        updateUI(result);
+    }
+
+    function updateUI(result) {
+        if(result.success) {
+            balanceText.innerText = "ETB " + result.newBalance;
+        }
+        messageText.innerText = result.msg;
+        amountInput.value = ""; // input ማጽጃ
+    }
+</script>
+
+</body>
+</html>

@@ -42,42 +42,27 @@
         function updatePhoto() {
             document.getElementById('photo-display').innerHTML = photoCounter();
         }
-
         function updateVideo() {
             document.getElementById('video-display').innerHTML = videoCounter();
         }
     </script> 
 </body>
 </html>
-
 <!-- 
-const add = myCounter();
-const multiply = myCounter();
-
-console.log(add());      // Output: 1
-console.log(add());      // Output: 2
-console.log(multiply()); // Output: ??? The answer is 1. Why?
-console.log(add());      // Output: 3
-function myCounter() {
-    let counter = 0;
+// Function Factory
+function createLikeSystem() {
+    let likes = 0;
     return function() {
-        counter++;
-        return counter;
+        likes++;
+        return likes;
     };
 }
 
-// The multiply function has its own separate counter
-const multiply = myCounter();
+// User clicks Like on a PHOTO
+const photoLike = createLikeSystem(); 
+console.log(photoLike()); // 1
 
-console.log(multiply()); // Output: 1
-console.log(multiply()); // Output: 2
-console.log(multiply()); // Output: 3
+// User clicks Like on a VIDEO
+const videoLike = createLikeSystem(); 
+console.log(videoLike()); // 1 (It doesn't start at 2 because the video is a different "box"!) -->
 
-// Each function maintains its own closure with its own counter variable.
-
-// This demonstrates how closures allow functions to have private state.   
-// ይህ ኮድ ሁለት ተለያዩ ፋንክሽኖች እንዴት እያንዳንዱ ራሱ የግል ሁኔታ (private state) እንደሚኖረው ያሳያል።
-// እያንዳንዱ ፋንክሽን በራሱ የተለየ ክተር (counter) ተጠቃሚ ነው።
-// ይህ በመጠቀም ፋንክሽኖች የግል ሁኔታ እንዴት እንደሚኖረው ያሳያል።
-// በዚህ ሁኔታ ክተሩ ከውጭ አይታወቅም።
-// ይህ የግል ሁኔታ በፋንክሽኖች ውስጥ እንዴት እንደሚጠቀም ያሳያል። -->
