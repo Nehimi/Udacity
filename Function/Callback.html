@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Javascripts function</title>
+    </head>
+    <body>
+<h1>Javascripts function</h1>   
+<p>JavaScript functions are executed in the sequence they are called.</p>
+<p id="demo"></p>
+<script>
+    function myDisplayer(some){
+        document.getElementById("demo").innerHTML=some;
+    }
+
+    function myFirst(callback){
+        callback("Hello from myFirst function!");
+    }
+
+    function mySecond(callback){
+        callback("Hello from mySecond function!");
+    }
+    myFirst(myDisplayer);// output: Hello from myFirst function!
+    mySecond(myDisplayer);// output: Hello from mySecond function!
+// so the desplayed text will be "Hello from mySecond function!" because it is called last.
+</script>
