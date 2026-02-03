@@ -20,15 +20,14 @@
 <body>
 
 <div class="bank-card">
-    <h2>የኢትዮጵያ ባንክ</h2>
-    <p>አሁን ያለው ሂሳብ፡</p>
+    <h2>Commertial Bank Ethiopia</h2>
+    <p>Current balance፡</p>
     <div id="balance-display">ETB 100</div>
     
-    <input type="number" id="amount" placeholder="መጠን ያስገቡ">
+    <input type="number" id="amount" placeholder=" Enter amount">
     <br>
-    <button class="dep-btn" onclick="handleDeposit()">ብር አስገባ</button>
-    <button class="with-btn" onclick="handleWithdraw()">ብር አውጣ</button>
-    
+    <button class="dep-btn" onclick="handleDeposit()">Depost money</button>
+    <button class="with-btn" onclick="handleWithdraw()">Withdraw money</button>
     <p id="message"></p>
 </div>
 
@@ -42,20 +41,26 @@
             deposit: function(amount) {
                 if(amount > 0) {
                     balance += amount;
-                    return { success: true, newBalance: balance, msg: "በተሳካ ሁኔታ ገብቷል!" };
+                    return { success: true, 
+                        newBalance: balance,
+                         msg: "Deposit is successfuly!"
+                         };
                 }
-                return { success: false, msg: "ትክክለኛ ቁጥር ያስገቡ" };
+                return { success: false,
+                     msg: "Enter valid number" };
             },
             withdraw: function(amount) {
                 if (amount > balance) {
-                    return { success: false, msg: "በቂ ሂሳብ የሎትም!" };
+                    return { success: false,
+                         msg: "You have no sufcient balance!" };
                 }
                 balance -= amount;
-                return { success: true, newBalance: balance, msg: "ብር ወጥቷል!" };
+                return { success: true, 
+                    newBalance: balance,
+                     msg: "withdraw is sucessfully!" };
             },
-            getBalance: function() {
-                return balance;
-            }
+            
+    
         };
     }
 
