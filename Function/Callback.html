@@ -25,3 +25,78 @@
     mySecond(myDisplayer);// output: Hello from mySecond function!
 // so the desplayed text will be "Hello from mySecond function!" because it is called last.
 </script>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Functions</h1>
+<h2>Function Sequence</h2>
+<p>JavaScript functions are executed in the sequence they are called.</p>
+
+<p>The result of the calculation is:</p>
+<p id="demo"></p>
+
+<script>
+function myDisplayer(some) {
+  document.getElementById("demo").innerHTML = some;
+}
+
+function myCalculator(num1, num2) {
+  let sum = num1 + num2;
+  return sum;
+}
+
+let result = myCalculator(5, 5);
+myDisplayer(result);
+</script>
+
+</body>
+</html> -->
+
+
+
+<!-- When you pass a function as an argument, remember not to use parenthesis.
+
+Right: myCalculator(5, 5, myDisplayer);
+
+Wrong: myCalculator(5, 5, myDisplayer()); -->
+
+
+<!-- <html>
+<body>
+<h2>setTimeout() with callback function</h2>
+<p>Wait for 3 seconds and then display a message:</p>
+<p id="demo"></p>
+<script>
+    setTimeout(myFunction, 3000);
+    function myFunction(){
+        document.getElementById("demo").innerHTML="I love JavaScript!";
+    }   
+
+
+</script>
+</body>
+</html> 
+Note
+When you pass a function as an argument, remember not to use parenthesis.
+
+Right: setTimeout(myFunction, 3000);
+
+Wrong: setTimeout(myFunction(), 3000);
+
+-->
+
+
+
+<!-- function one(call_two){
+   call_two()
+  console.log("Step 1 complet . please call step 2");
+ 
+}
+
+function two(){
+  console.log("Step 2");
+}
+one(two); -->
