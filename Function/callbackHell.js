@@ -45,7 +45,7 @@ setTimeout(()=>{
    
   },2000)
   
-},0000)
+},10000)
 };
 
 order(0, production);
