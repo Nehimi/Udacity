@@ -65,3 +65,14 @@ order(2000,()=>{console.log(`${stocks.fruits[0]} was selected`)})
 .then(()=>{
    return order(1000,()=>console.log("ice cream was served"))
 })
+
+
+
+
+.catch(()=>{
+   console.log("Customer left")    
+       })
+
+.finally(()=>{
+   console.log("Day ended ,shope is closed")
+})
