@@ -35,13 +35,13 @@ console.log(isEven(7));// Output: false
 
 // Function declarations can be called before they are defined:
 
-const sum = add(2, 3); // Will work
-function add(a, b) {return a + b;}
-console.log(sum); // Output: 5
-// Function expressions can not be called before they are defined:
+// const sum = add(2, 3); // Will work
+// function add(a, b) {return a + b;}
+// console.log(sum); // Output: 5
+// // Function expressions can not be called before they are defined:
 
-const sum = add(2, 3); // ⛔ Will generate error
-const add = function (a, b) {return a + b;};
-console.log(sum); // Output: Error
+// const sum = add(2, 3); // ⛔ Will generate error
+// const add = function (a, b) {return a + b;};
+// console.log(sum); // Output: Error
 
 
