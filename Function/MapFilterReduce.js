@@ -26,3 +26,20 @@ const sum = numbers.reduce((acc, n) =>{
 }, 0);// Initial value is 0
 // sum = 1+2+3+4+5 = 15
 console.log("Sum:", sum);
+
+// Combining map, filter, and reduce
+const number = [1, 2, 3, 4, 5];
+
+const result = number
+  .filter(n => n % 2 === 0)// [2,4]
+  .map(n => n * 10)// [20,40]
+  .reduce((sum, n) => sum + n, 0);// 60
+
+console.log(result); // 60
+
+// | Method | የሚያደርገው |
+// | ------ | ------- |
+// | map    | ቀይር     |
+// | filter | ምረጥ     |
+// | reduce | አንድ አውጣ |
+
